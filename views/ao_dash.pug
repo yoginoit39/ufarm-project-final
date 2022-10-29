@@ -1,0 +1,149 @@
+doctype html
+head
+  title A/O dashboard
+  // CSS only
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  link(rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css')
+  link(rel='stylesheet' href='/css/style.css')
+// main
+.main
+  nav.navbar.navbar-expand-lg(style='background-color: #3D8361;')
+    a#btn-signout(href='') Sign Out
+  // tile section
+  .container.tile-container
+    .row.gx-5
+      .col-lg-4
+        #tile-num.border.bg-success
+          p Farmers Registered
+          p 120
+      .col-lg-4
+        #tile-num.border.bg-primary
+          p Farmer One Active
+          p 120
+      .col-lg-4
+        #tile-num.border.bg-warning
+          p Appointed Farmer One
+          p Yogesh Lakhani
+  // end of tile
+  // search bar
+  .container.search-bar
+    .row
+      .col-lg-3
+      .col-lg-6
+        .form-outline
+          h4(style='padding-left: 170px; color: rgb(53, 49, 49);') Search for query
+          input#form1.form-control(type='search' placeholder='Type query' aria-label='Search')
+      .col-lg-3
+  .container
+    .row
+      .col-lg-12
+        // Button trigger modal
+        button.btn.btn-success(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop')
+          | Register Farmer One +
+        // Modal
+        #staticBackdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+          .modal-dialog.modal-lg
+            .modal-content
+              .modal-header
+                h5#staticBackdropLabel.modal-title Register Farmer One
+                button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+              .modal-body.modal-xl
+                .container
+                  .row
+                    .col-lg-12
+                      form.cont-form(action='/ao' method='post' enctype='multipart/form-data' )
+                        .row.form-row
+                          .form-floating.col-lg-6
+                            input#floatingInput.form-control(type='text' placeholder='fo_id' name='fo_id')
+                            label#float-lables F/O Number
+                          .form-floating.col-lg-6
+                            input#floatingInput.form-control(type='date' placeholder='Date of Registration' name='reg_date')
+                            label#float-lables Registration Date
+                        .row.form-row
+                          .form-floating.col-lg-5.gender-radio
+                            .gender-name-form Gender
+                            .form-check.form-check-inline
+                              input#inlineRadio1.form-check-input(type='radio' name='inlineRadioOptions' value='option1')
+                              label.form-check-label(for='inlineRadio1') Male
+                            .form-check.form-check-inline
+                              input#inlineRadio2.form-check-input(type='radio' name='inlineRadioOptions' value='option2')
+                              label.form-check-label(for='inlineRadio2') Female
+                          .form-floating.col-lg-6
+                            input#floatingInput.form-control(type='date' placeholder='Date of birth' name='dob')
+                            label#float-lables Date of Birth
+                        .row.form-row
+                          .form-floating.col-lg-6.form-sel-act
+                            select.form-select(aria-label='Default select example' name='Acty_involved')
+                              option#selected(selected='') Activities involved
+                              option(value='1') Mobilization
+                              option(value='2') Supervision
+                              option(value='3') Regulation
+                              option(value='4') Support
+                          .form-floating.col-lg-6
+                            input#floatingInput.form-control(type='text' placeholder='Nin Number' name='nin_number')
+                            label#float-lables Nin Number
+                        .row.form-row
+                          .form-floating.col-lg-6
+                            input#floatingInput.form-control(type='text' placeholder='Phone Number' name='phn_nmbr')
+                            label#float-lables Phone Number
+                          .form-floating.col-lg-6
+                            input#floatingInput.form-control(type='text' placeholder='Directions Home' name='home_directions')
+                            label#float-lables Directions Home
+                        .row.form-row
+                          .form-floating.col-lg-6
+                            input#floatingInput.form-control(type='text' placeholder='Residence Type' name='res_type')
+                            label#float-lables Residence Type
+                          .form-floating.col-lg-6
+                            input#floatingInput.form-control(type='text' placeholder='Period of Stay in Ward' name='period_of_stay')
+                            label#float-lables Period of Stay in Ward           
+                            .modal-footer
+                                button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
+                                button.btn.btn-success(type='submit'  name='submit') Submit
+    // table
+  .container.info-table
+    .row
+      .table-responsive
+        table.table.table-bordered.border-dark.table-hover
+          thead(style='background-color: #3D8361; color: white;')
+            tr
+              th f/0 Number
+              th Date of Registration
+              th Date of Birth
+              th Gender
+              th Activities Involved
+              th NIN Number
+              th Phone Number
+              th Directions to Home
+              th Residence Type
+              th Period of Stay in ward (Years)
+              th Alter Details
+          tbody
+            each ao_user in ao_users
+                tr.align-middle
+                    td #{ao_user.fo_id}
+                    td #{ao_user.reg_date}
+                    td #{ao_user.dob}
+                    td #{ao_user.gender}
+                    td #{ao_user.Acty_involved}
+                    td #{ao_user.nin_number}
+                    td #{ao_user.phn_nmbr}
+                    td #{ao_user.home_directions}
+                    td #{ao_user.res_type}
+                    td #{ao_user.period_of_stay}
+                    td
+                      a.text-success(href='#')
+                       i.fas.fa-edit.fa-lg.mx-1
+                      a.text-danger(href='#')
+                       i.fas.fa-trash.fa-lg.mx-1
+                                      
+// JavaScript Bundle with Popper
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js' integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==' crossorigin='anonymous' referrerpolicy='no-referrer')
+script(type='text/javascript' src='https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3' crossorigin='anonymous')
+script.
+  $(document).ready(function(){
+  $("table").DataTable({
+  order:[0, 'desc']
+  });
+  });

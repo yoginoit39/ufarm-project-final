@@ -1,0 +1,16 @@
+const express = require('express');
+const router = express.Router();
+
+
+router.get('/', function(req,res){
+    res.render('uf_dash_add_prod');
+});
+
+router.post('/', function(req,res){
+    console.log(req.body);
+});
+
+
+data-bs-target='#fo_form_target'
+
+id='fo_form_target'

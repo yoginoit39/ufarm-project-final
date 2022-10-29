@@ -1,0 +1,143 @@
+doctype html
+head
+  title UF dashboard
+  // CSS only
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous')
+  link(rel='stylesheet' href='/css/style.css')
+#mySidenav.sidenav
+  a.closebtn(href='javascript:void(0)' onclick='closeNav()') &times;
+  a(href='/pages/register_form.html') Register Farmer One
+  a(href='#') Appoint Farmer
+nav.navbar.navbar-expand-lg(style='background-color: #3D8361;')
+  span(style='font-size:30px;cursor:pointer; color: white; padding-left: 50px;' onclick='openNav()') &#x2630;
+  a#btn-signout(href='') Sign Out
+// tile section
+.container.tile-container
+  .row.gx-5
+    .col-lg-4
+      #tile-num.border.bg-success
+        p Total Urban Farmers
+        p 120
+    .col-lg-4
+      #tile-num.border.bg-primary
+        p Produce to Inspect
+        p 120
+    .col-lg-4
+      #tile-num.border.bg-warning
+        p Produce to Approve
+        p 630
+// end of tile
+// second tile section
+.container.tile-container.justify-content-center
+  .row.gx-5
+    .col-lg-6
+      #tile-num.border.bg-success
+        p Bookings
+        p 180
+    .col-lg-6
+      #tile-num.border.bg-primary
+        p Orders
+        p 120
+// search bar
+.container.search-bar
+  .row
+    .col-lg-3
+    .col-lg-6
+      .form-outline
+        h4(style='padding-left: 170px; color: rgb(53, 49, 49);') Search for query
+        input#form1.form-control(type='search' placeholder='Type query' aria-label='Search')
+    .col-lg-3
+.container
+  .row
+    .col-lg-12
+      // Button trigger modal
+      button.btn.btn-success(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop')
+        | Register Urban Farmers +
+      // Modal
+      #staticBackdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+        .modal-dialog.modal-lg
+          .modal-content
+            .modal-header
+              h5#staticBackdropLabel.modal-title Register Urban Farmer
+              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body.modal-xl
+              .container
+                .row
+                  .col-lg-12
+                    form.cont-form(action='/fo' method='post' enctype="multipart/form-data" id='fo_model')
+                      .row.form-row
+                        .form-floating.col-lg-6
+                          input#floatingInput.form-control(type='text' placeholder='ID' name='famer_id')
+                          label#float-lables Farmer ID
+                        .form-floating.col-lg-6
+                          input#floatingInput.form-control(type='date' placeholder='Date of Registration' name='reg_date')
+                          label#float-lables Registration Date
+                      .row.form-row
+                        .form-floating.col-lg-6
+                          input#floatingInput.form-control(type='text' placeholder='Full Name' name='full_name')
+                          label#float-lables Full Name
+                        .form-floating.col-lg-5.gender-radio
+                          .gender-name-form Gender
+                          .form-check.form-check-inline
+                            input#inlineRadio1.form-check-input(type='radio' name='inlineRadioOptions' value='option1')
+                            label.form-check-label(for='inlineRadio1') Male
+                          .form-check.form-check-inline
+                            input#inlineRadio2.form-check-input(type='radio' name='inlineRadioOptions' value='option2')
+                            label.form-check-label(for='inlineRadio2') Female
+                      .row.form-row
+                        .form-floating.col-lg-6
+                          input#floatingInput.form-control(type='date' placeholder='Date of birth' name='dob')
+                          label#float-lables Date of Birth
+                        .form-floating.col-lg-6.form-sel-act
+                          select.form-select(aria-label='Default select example' name='activity')
+                            option#selected(selected='') Activities Undertaken
+                            option(value='Horticulture Produce') Horticulture Produce
+                            option(value='Poultry') Poultry
+                            option(value='Dairy Produce') Dairy Produce
+                      .row.form-row
+                        .form-floating.col-lg-6
+                          input#floatingInput.form-control(type='text' placeholder='Contact' name='contact')
+                          label#float-lables Contact
+                        .form-floating.col-lg-6
+                          input#floatingInput.form-control(type='text' placeholder='Nin Number' name='ninNumber')
+                          label#float-lables Nin Number
+                      .row
+                        .form-floating.col-lg-6
+                          input#floatingInput.form-control(type='text' placeholder='Ward Name' name='ward_name')
+                          label#float-lables Ward Name
+                      .modal-footer
+                        button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
+                        button.btn.btn-success(type='button' form='fo_model' name='submit') Submit
+// table
+.container.info-table
+  .row
+    .table-responsive
+      table.table.table-bordered.border-dark.table-hover
+        thead(style='background-color: #3D8361; color: white;')
+          tr
+            th(scope='col') Urban Farmer ID
+            th(scope='col') Names
+            th(scope='col') Date of Registration
+            th(scope='col') Gender
+            th(scope='col') DOB
+            th(scope='col') Activities Involved
+            th(scope='col') NIN Number
+            th(scope='col') Contact
+            th(scope='col') Ward Name
+        tbody
+          tr
+            th(scope='row') 1
+            td Mark
+            td Otto
+            td @mdo
+            td content
+            td content
+            td content
+            td content
+            td content
+
+// JavaScript Bundle with Popper
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js' integrity='sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8' crossorigin='anonymous')
+
+
+

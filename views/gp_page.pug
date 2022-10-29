@@ -1,0 +1,336 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous')
+  link(rel='stylesheet' href='/css/style.css')
+  title Ufarm
+
+// navbar
+nav.navbar.navbar-expand-lg.bg-success.main-nav
+  .container-fluid
+    a.navbar-brand(href='#') Navbar
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link(aria-current='page' href='#') Home
+        li.nav-item
+          a.nav-link(href='#') Features
+        li.nav-item
+          a.nav-link(href='#') Pricing
+// img slider
+.img-slider
+  #carouselExampleControls.carousel.slide(data-bs-ride='carousel')
+    .carousel-inner
+      .carousel-item.active
+        img.d-block.w-100.img-fluid(src='/img/farmers.jpg' alt='...')
+      .carousel-item
+        img.d-block.w-100.img-fluid(src='/img/fruits.jpg' alt='...')
+      .carousel-item
+        img.d-block.w-100.img-fluid(src='/img/veg.jpg' alt='...')
+    button.carousel-control-prev(type='button' data-bs-target='#carouselExampleControls' data-bs-slide='prev')
+      span.carousel-control-prev-icon(aria-hidden='true')
+      span.visually-hidden Previous
+    button.carousel-control-next(type='button' data-bs-target='#carouselExampleControls' data-bs-slide='next')
+      span.carousel-control-next-icon(aria-hidden='true')
+      span.visually-hidden Next
+// info section
+//- .container.info-section
+//-   .row
+//-     .col-lg-3.col-sm-3.col-md-3.d-sm-inline-flex
+//-       img.img-fluid.img-icon(src='/img/8-trolley.svg' alt='')
+//-       p.info-text
+//-         strong.txt Free Shipping
+//-         br
+//-         |  On all orders over 30,000 UGX
+//-     .col-lg-3.col-sm-3.col-md-3.d-sm-inline-flex
+//-       img.img-fluid.img-icon(src='/img/9-money.svg' alt='')
+//-       p.info-text
+//-         strong.txt 24hrs Returns
+//-         br#mon-bck
+//-         |  Moneyback guarantee
+//-     .col-lg-3.col-sm-3.col-md-3.d-sm-inline-flex
+//-       img.img-fluid.img-icon(src='/img/10-credit-card.svg' alt='')
+//-       p.info-text
+//-         strong.txt Secure Payments
+//-         br
+//-         | Protected by Mobile Money
+//-     .col-lg-3.col-sm-3.col-md-3.d-sm-inline-flex
+//-       img.img-fluid.img-icon(src='/img/11-gift-card.svg' alt='')
+//-       p.info-text
+//-         strong.txt Offer &amp; gift here
+//-         br
+//-         | On all orders over
+// About Start
+.container-fluid.about-cont.py-5
+  .container.py-5
+    .row.gx-0.mb-3.mb-lg-0
+      .col-lg-6.my-lg-5.py-lg-5
+        .about-start.p-5
+          h1.display-5.mb-4 Welcome to Ufarm
+          p
+            | Tempor erat elitr at rebum at at clita. Diam dolor diam ipsum et, tempor sit sit diam amet et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor magna dolore erat amet
+          a.btn.btn-warning.rounded-pill.py-md-3.px-md-5.mt-4(href='') Contact Us
+      .col-lg-6(style='min-height: 400px;')
+        .position-relative.h-100
+          img.position-absolute.w-100.h-100(src='/img/veg1.webp' style='object-fit: cover;')
+    .row.gx-0
+      .col-lg-6(style='min-height: 400px;')
+        .position-relative.h-100
+          img.position-absolute.w-100.h-100(src='/img/img-2.jpg' style='object-fit: cover;')
+      .col-lg-6.my-lg-5.py-lg-5
+        .about-end.p-5
+          h1.display-5.mb-4 Why Choose Us?
+          p
+            | Tempor erat elitr at rebum at at clita. Diam dolor diam ipsum et, tempor sit sit diam amet et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor magna dolore erat amet
+          a.btn.btn-warning.rounded-pill.py-md-3.px-md-5.mt-4(href='') Get A Quote
+// About End
+// item carousel
+section.prod-carousel
+  h1#cat-heading Top Categories
+  .container.prod-container
+    .row
+      .col-lg-4
+        .card.prod-card(style='width: 18rem;')
+          img.card-img-top(src='/img/car-prod-veg.avif' alt='Card image cap')
+          .card-body.card-body-prod
+            h4.card-text Vegetables
+      .col-lg-4
+        .card.prod-card(style='width: 18rem;')
+          img.card-img-top(src='/img/car-prod-veg.avif' alt='Card image cap')
+          .card-body.card-body-prod
+            h4.card-text Fruits
+      .col-lg-4
+        .card.prod-card(style='width: 18rem;')
+          img.card-img-top(src='/img/car-prod-veg.avif' alt='Card image cap')
+          .card-body.card-body-prod
+            h4.card-text Dairy Products
+  .space
+// item carousel end
+// producr tabs
+.container.product-tab
+  ul#pills-tab.nav.nav-pills.mb-3.nav-tabs.d-flex.justify-content-center.justify-content-around(role='tablist')
+    li.nav-item(role='presentation')
+      button#pills-home-tab.nav-link.active(data-bs-toggle='pill' data-bs-target='#pills-home' type='button' role='tab' aria-controls='pills-home' aria-selected='true') Vegetables
+    li.nav-item(role='presentation')
+      button#pills-profile-tab.nav-link(data-bs-toggle='pill' data-bs-target='#pills-profile' type='button' role='tab' aria-controls='pills-profile' aria-selected='false') Fruits
+    li.nav-item(role='presentation')
+      button#pills-contact-tab.nav-link(data-bs-toggle='pill' data-bs-target='#pills-contact' type='button' role='tab' aria-controls='pills-contact' aria-selected='false') Dairy
+  #pills-tabContent.tab-content
+    // veg content
+    #pills-home.tab-pane.show.active(role='tabpanel' aria-labelledby='pills-home-tab')
+      .container
+        .row
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/carrot.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Carrots
+                p 6,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/potato.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Potatoes
+                p 3,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/tomato.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Tomatos
+                p 5,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/brocolli.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Brocolli
+                p 10,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+        .button.d-flex.justify-content-center.mt-5
+          button.view-btn View more
+    // fruits content
+    #pills-profile.tab-pane.fade(role='tabpanel' aria-labelledby='pills-profile-tab')
+      .container
+        .row
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/carrot.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Carrot
+                p 6,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/potato.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Potato
+                p 3,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/tomato.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Tomato
+                p 5,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/brocolli.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Brocolli
+                p 10,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+        .button.d-flex.justify-content-center.mt-5
+          button.view-btn View more
+    // dairy content
+    #pills-contact.tab-pane.fade(role='tabpanel' aria-labelledby='pills-contact-tab')
+      .container
+        .row
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/carrot.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Carrot
+                p 6,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/potato.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Potato
+                p 3,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/tomato.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Tomato
+                p 5,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+          .col-lg-3
+            .card.prod-card-tab(style='width: 17rem;')
+              img.card-img-cat(src='/img/brocolli.png' alt='Card image cap')
+              .card-body.card-body-prod
+                h5.card-text Brocolli
+                p 10,000UGX/kg
+                a.btn.btn-primary(href='#') Add to Cart
+        .button.d-flex.justify-content-center.mt-5
+          button.view-btn View more
+  .space
+// product tabs end
+// contact
+.container-fluid(style='background-color: #f7f5eb;')
+  .row
+    .col-lg-6
+      h1#contactus-header Have questions? Call us today!
+      h2(style='padding-left: 28%; padding-top: 20px; color: green;') +256-751-435-333
+    .col-lg-6
+      img(src='https://cdn.shopify.com/s/files/1/0290/0990/3715/files/12_9006c4fb-de97-4ab1-90eb-90efae555f0c_570x.png?v=1652447698' alt='')
+// end contact
+// footer
+footer.footer-section
+  .container
+    .footer-cta.pt-5.pb-5
+      .row
+        .col-xl-4.col-md-4.mb-30
+          .single-cta
+            i.fas.fa-map-marker-alt
+            .cta-text
+              h4 Find us
+              span 1010 Avenue, sw 54321, chandigarh
+        .col-xl-4.col-md-4.mb-30
+          .single-cta
+            i.fas.fa-phone
+            .cta-text
+              h4 Call us
+              span 9876543210 0
+        .col-xl-4.col-md-4.mb-30
+          .single-cta
+            i.far.fa-envelope-open
+            .cta-text
+              h4 Mail us
+              span mail@info.com
+    .footer-content.pt-5.pb-5
+      .row
+        .col-xl-4.col-lg-4.mb-50
+          .footer-widget
+            .footer-logo
+              a(href='index.html')
+                img.img-fluid(src='https://i.ibb.co/QDy827D/ak-logo.png' alt='logo')
+            .footer-text
+              p
+                | Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
+                | elit,Lorem ipsum dolor sit amet.
+            .footer-social-icon
+              span Follow us
+              a(href='#')
+                i.fab.fa-facebook-f.facebook-bg
+              a(href='#')
+                i.fab.fa-twitter.twitter-bg
+              a(href='#')
+                i.fab.fa-google-plus-g.google-bg
+        .col-xl-4.col-lg-4.col-md-6.mb-30
+          .footer-widget
+            .footer-widget-heading
+              h3 Useful Links
+            ul
+              li
+                a(href='#') Home
+              li
+                a(href='#') about
+              li
+                a(href='#') services
+              li
+                a(href='#') portfolio
+              li
+                a(href='#') Contact
+              li
+                a(href='#') About us
+              li
+                a(href='#') Our Services
+              li
+                a(href='#') Expert Team
+              li
+                a(href='#') Contact us
+              li
+                a(href='#') Latest News
+        .col-xl-4.col-lg-4.col-md-6.mb-50
+          .footer-widget
+            .footer-widget-heading
+              h3 Subscribe
+            .footer-text.mb-25
+              p Don&rsquo;t miss to subscribe to our new feeds, kindly fill the form below.
+            .subscribe-form
+              form(action='#')
+                input(type='text' placeholder='Email Address')
+                button
+                  i.fab.fa-telegram-plane
+  .copyright-area
+    .container
+      .row
+        .col-xl-6.col-lg-6.text-center.text-lg-left
+          .copyright-text
+            p
+              | Copyright &copy; 2018, All Right Reserved 
+              a(href='https://codepen.io/anupkumar92/') Anup
+        .col-xl-6.col-lg-6.d-none.d-lg-block.text-right
+          .footer-menu
+            ul
+              li
+                a(href='#') Home
+              li
+                a(href='#') Terms
+              li
+                a(href='#') Privacy
+              li
+                a(href='#') Policy
+              li
+                a(href='#') Contact
+script(src='/js/prod-card.js')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js' integrity='sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8' crossorigin='anonymous')
