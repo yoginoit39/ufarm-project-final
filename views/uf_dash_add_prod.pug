@@ -9,15 +9,21 @@ head
 // main
 .main
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+    a.navbar-brand(href='#') Main Nav
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
-    #navbarNavAltMarkup.collapse.navbar-collapse
-      .navbar-nav
-        a.nav-item.nav-link.active(href='#')
-          | Welcome #####
-          span.sr-only (current)
-        a.nav-item.nav-link(href='#')
-        a.nav-item.nav-link(href='#') Sign Out
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link(href='/ao') AO 
+        li.nav-item
+          a.nav-link(href='/fo') FO 
+        li.nav-item
+          a.nav-link(href='/gp') GP 
+        li.nav-item
+          a.nav-link(href='/add_prod') UF 
+        li.nav-item 
+          a.nav-link(href='/auth') Login    
 
   .container.main-container-uf
     .row
@@ -25,45 +31,45 @@ head
         form#add-form.cont-form(action='/add_prod' method='post' enctype="multipart/form-data")
           .row.form-row
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='date' placeholder='Date' name='date')
+              input#floatingInput.form-control(type='date' placeholder='Date' name='date' required)
               label#float-lables Date
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='text' placeholder='Produce Name' name='prod_name')
+              input#floatingInput.form-control(type='text' placeholder='Produce Name' name='prod_name' required)
               label#float-lables Produce Name
           .row.form-row
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='text' placeholder='Ward Name' name='ward_name')
+              input#floatingInput.form-control(type='text' placeholder='Ward Name' name='ward_name' required)
               label#float-lables Ward Name
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='number' placeholder='Unit Price' name='unit_price')
+              input#floatingInput.form-control(type='number' placeholder='Unit Price' name='unit_price' required)
               label#float-lables Unit Price UGX
           .row.form-row
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='text' placeholder='Quantity' name='qty')
+              input#floatingInput.form-control(type='text' placeholder='Quantity' name='qty' required)
               label#float-lables Quantity
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='text' placeholder='Directions' name='directions')
+              input#floatingInput.form-control(type='text' placeholder='Directions' name='directions' required)
               label#float-lables Directions
           .row.form-row
             .form-floating.col-lg-6.form-sel-act
-              select.form-select(aria-label='Default select example' name='produce_type')
+              select.form-select(aria-label='Default select example' name='produce_type' required)
                 option#selected(selected='') Produce Type
                 option(value='Organic') Organic
                 option(value='None Organic') None Organic
             .form-floating.col-lg-6.form-sel-act.mod-of-pay
-              select.form-select(aria-label='Default select example' name='mode_payment')
+              select.form-select(aria-label='Default select example' name='mode_payment' required)
                 option#selected(selected='') Mode of payment
                 option(value='Cash') Cash
                 option(value='Mobile Money') Mobile Money
           .row.form-row(style='padding-top: 20px;')
             .form-floating.col-lg-6.form-sel-act
-              select.form-select(aria-label='Default select example' name='mode_of_delivery')
+              select.form-select(aria-label='Default select example' name='mode_of_delivery' required)
                 option#selected(selected='') Mode of delivery
                 option(value='Pick Up') Pick Up
                 option(value='Home delivery') Home delivery
             .col-lg-6
               div
-                input#formFile.form-control.upload-image(type='file' name='prod_image')
+                input#formFile.form-control.upload-image(type='file' name='prod_image' required)
           button(type='submit' name='submit' class='submit-btn' href) Add item
 
 .container.info-table
@@ -99,10 +105,12 @@ head
                                     img(src="/"+user_prod.prod_image, width="90" class="img-thumbnail")                                  
                                   .d-inline
                                     td
-                                      a.text-success(href='#')
-                                        i.fas.fa-edit.fa-lg.mx-1
-                                      a.text-danger(href='#')
-                                        i.fas.fa-trash.fa-lg.mx-1
+                                      a.text-success(href=`/add_prod/update/${user_prod._id}`)
+                                        i.fas.fa-edit.fa-lg.mx-1 
+                                      form(action=`/add_prod/delete` method="post")  
+                                        input(type="hidden" value=`${user_prod._id}` name='delete')  
+                                        button(type="submit") Delete
+                                        
 
 
 script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js' integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==' crossorigin='anonymous' referrerpolicy='no-referrer')

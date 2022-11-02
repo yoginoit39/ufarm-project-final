@@ -8,19 +8,22 @@ head
   title Ufarm
 
 // navbar
-nav.navbar.navbar-expand-lg.bg-success.main-nav
-  .container-fluid
-    a.navbar-brand(href='#') Navbar
-    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
-      span.navbar-toggler-icon
-    #navbarNav.collapse.navbar-collapse
-      ul.navbar-nav
-        li.nav-item
-          a.nav-link(aria-current='page' href='#') Home
-        li.nav-item
-          a.nav-link(href='#') Features
-        li.nav-item
-          a.nav-link(href='#') Pricing
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand(href='#') Main Nav
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarNav.collapse.navbar-collapse
+    ul.navbar-nav
+      li.nav-item
+        a.nav-link(href='/ao') AO 
+      li.nav-item
+        a.nav-link(href='/fo') FO 
+      li.nav-item
+        a.nav-link(href='/gp') GP 
+      li.nav-item
+        a.nav-link(href='/add_prod') UF 
+      li.nav-item 
+        a.nav-link(href='/auth') Login
 // img slider
 .img-slider
   #carouselExampleControls.carousel.slide(data-bs-ride='carousel')

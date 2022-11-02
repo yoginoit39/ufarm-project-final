@@ -1,7 +1,8 @@
-.body{
+body{
   margin-left: 0px;
   margin-top: 0px;
   font-family: sans-serif;
+  background-color: whitesmoke;
 }
 
 #btn-signout{
@@ -10,6 +11,16 @@
   color: white;
   text-decoration: none;
 
+}
+
+.reg_btn{
+  width: 200px;
+  margin-top: 80px;
+}
+
+#reg_button{
+  height: 50px;
+  border-radius: 0;
 }
 
 .sidenav {
@@ -112,6 +123,8 @@
   border-radius: 0px;
 }
 
+
+
 #float-lables{
   margin-left: 20px;
 }
@@ -135,6 +148,8 @@
   border-radius: 0;
   margin-left: 10px;
 }
+
+/* ****************************LOGIN AND SIGN UP FORM****************************** */
 
 
 /*************************** urban farmer form ***********************/

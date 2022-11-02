@@ -14,6 +14,9 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
+
+
+// add product
 router.get("/add_prod", async function (req, res) {
   const user_produce = await add_produce.find();
   console.log(user_produce);
@@ -34,5 +37,42 @@ router.post("/add_prod", upload.single("prod_image"), async function (req, res) 
     }
   })
 });
+
+// update
+router.get("/add_prod/update/:id", async function(req,res){
+	try {
+		const user_produce = await add_produce.findOne({_id:req.params.id});
+		console.log('Product updated for uf', user_produce);
+		res.render("prod_update_add", { user_produce });
+    		
+	} catch (error) {
+		res.status(400).send('not able to load view');
+	}
+});
+
+router.post("/add_prod/update/:id", async function(req,res){
+	try {
+		await add_produce.findOneAndUpdate(req.params.userid, req.body);
+		res.redirect("/add_prod");
+		
+	} catch (error) {
+		res.status(400).send('Unable to update');
+	}
+});
+
+
+// delete product
+router.post('/add_prod/delete', async function(req,res){
+  try {
+    await add_produce.deleteOne({_id:req.body.delete});
+  } catch (error) {
+    res.status(400).send('could not delete produce');
+  }
+});
+
+
+
+
+
 
 module.exports = router;

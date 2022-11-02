@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
-    farmer_id:{
+    uf_id:{
         type: String,
         // required: true
     },
@@ -10,11 +10,8 @@ const userSchema = new mongoose.Schema({
     full_name:{
         type: String,
     },
-    male:{
-        type: String
-    },
-    female:{
-        type: String
+    gender:{
+        type: String,
     },
     dob:{
         type: String,

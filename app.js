@@ -8,6 +8,8 @@ const ufRoute = require('./routes/uf_route');
 const gpRoute = require('./routes/gp_route');
 const aoRoute = require('./routes/ao_route');
 const foRoute = require('./routes/fo_route');
+const authRoute = require('./routes/authRoute');
+
 
 
 const app = express();
@@ -31,20 +33,23 @@ app.use( '/public/uploads', express.static(__dirname + '/public/uploads'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
-// app.use(session({
-//     secret: 'my secret key',
-//     saveUninitialized: false,
-//     resave: false,
-// }));
+app.use(session({
+    secret: 'my secret key',
+    saveUninitialized: false,
+    resave: false,
+}));
+
 
 app.get('/', function(req,res){
-    res.render('main_nav');
+    res.render('login');
 });
 
 app.use("/", aoRoute);
 app.use("/", foRoute);
 app.use("/", gpRoute);
 app.use("/", ufRoute);
+app.use("/", authRoute);
+
 
 
 // middleware for storing messages

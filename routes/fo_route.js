@@ -24,5 +24,14 @@ router.post("/fo", async (req, res) => {
 	})
 });
 
+router.post('/fo_approve/:productid', async function(req,res){
+	// get productid from req.params.id
+	// find product with id
+	// const add_produce findbyid()
+	// add_produce.status = approved
+	// add_produce.save();
+	// then i can redirect
+});   
+
 
 module.exports = router;
