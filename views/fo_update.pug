@@ -68,19 +68,19 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
         .container
           .row
             .col-lg-12
-              form.cont-form(action='/fo' method='post')
+              form.cont-form(action=`/fo/update/${}` method='post')
                 .row.form-row
                   .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='text' placeholder='F/O Number' name='uf_id' required)
+                    input#floatingInput.form-control(type='text' placeholder='F/O Number' name='uf_id' )
                     label#float-lables U/F Number
                   .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='date' placeholder='Registation Date'  name='reg_date' required)
+                    input#floatingInput.form-control(type='date' placeholder='Registation Date'  name='reg_date' )
                     label#float-lables Registration Date
                   .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='text' placeholder='Full Name'  name='full_name' required)
+                    input#floatingInput.form-control(type='text' placeholder='Full Name'  name='full_name' )
                     label#float-lables Full Name
                   .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='date' placeholder='Date of Birth' name='dob' required)
+                    input#floatingInput.form-control(type='date' placeholder='Date of Birth' name='dob' )
                     label#float-lables Date of Birth
                   .form-floating.col-lg-6.form-sel-act
                     select.form-select(aria-label='Gender' name='gender')
@@ -88,20 +88,20 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
                       option(value='Male') Male
                       option(value='Female') Female  
                   .form-floating.col-lg-6.form-sel-act(style='margin-top:0px')
-                    select.form-select(aria-label='Activities Undertaken' name='activity' required)
+                    select.form-select(aria-label='Activities Undertaken' name='activity' )
                       option() Activities Undertaken
                       option(value='Mobilization') Mobilization
                       option(value='Supervision') Supervision
                       option(value='Regulation') Regulation
                       option(value='Support') Support              
                   .form-floating.col-lg-6(style='margin-top:20px')
-                    input#floatingInput.form-control(type='text' placeholder='Nin Number' name='ninNumber' required)
+                    input#floatingInput.form-control(type='text' placeholder='Nin Number' name='ninNumber' )
                     label#float-lables Nin Number
                   .form-floating.col-lg-6
-                    input#floatingInput.form-control.fo_phn_field(type='tel' placeholder='Phone Number' name='contact' style='margin-top:20px' required)
+                    input#floatingInput.form-control.fo_phn_field(type='tel' placeholder='Phone Number' name='contact' style='margin-top:20px')
                     label#float-lables(style='margin-top:20px') Phone Number
                   .form-floating.col-lg-6.form-sel-act
-                    select.form-select(aria-label='Ward Name' name='ward_name' required)
+                    select.form-select(aria-label='Ward Name' name='ward_name' )
                       option() Ward Name
                       option(value='Kampala') Kampala
                       option(value='Masaka') Masaka 

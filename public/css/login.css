@@ -16,3 +16,7 @@ a {
 .form-right i {
     font-size: 100px;
 }
+
+.body{
+    background-image: url(../img/green-bg.jpg);
+}

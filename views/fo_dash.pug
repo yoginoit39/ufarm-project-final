@@ -72,7 +72,65 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
                 .row.form-row
                   .form-floating.col-lg-6
                     input#floatingInput.form-control(type='text' placeholder='F/O Number' name='uf_id' required)
-                    label#float-lables U/F Number
+                    label#float-lables Unique Id
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='date' placeholder='Registation Date'  name='reg_date' required)
+                    label#float-lables Registration Date
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='text' placeholder='Full Name'  name='full_name' required)
+                    label#float-lables Full Name
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='date' placeholder='Date of Birth' name='dob' required)
+                    label#float-lables Date of Birth
+                  .form-floating.col-lg-6.form-sel-act
+                    select.form-select(aria-label='Gender' name='gender')
+                      option() Gender
+                      option(value='Male') Male
+                      option(value='Female') Female  
+                  .form-floating.col-lg-6.form-sel-act(style='margin-top:0px')
+                    select.form-select(aria-label='Activities Undertaken' name='activity' required)
+                      option() Activities Undertaken
+                      option(value='Mobilization') Mobilization
+                      option(value='Supervision') Supervision
+                      option(value='Regulation') Regulation
+                      option(value='Support') Support              
+                  .form-floating.col-lg-6(style='margin-top:20px')
+                    input#floatingInput.form-control(type='text' placeholder='Nin Number' name='ninNumber' required)
+                    label#float-lables Nin Numberadd_prod
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control.fo_phn_field(type='tel' placeholder='Phone Number' name='contact' style='margin-top:20px' required)
+                    label#float-lables(style='margin-top:20px') Phone Number
+                  .form-floating.col-lg-6.form-sel-act
+                    select.form-select(aria-label='Ward Name' name='ward_name' required)
+                      option() Ward Name
+                      option(value='Kampala') Kampala
+                      option(value='Masaka') Masaka 
+                      option(value='Jinja') Jinja
+                      option(value='Hoima') Hoima  
+                  .modal-footer
+                    button.btn.btn-success(type='submit' ) Submit
+                    button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
+
+
+
+
+
+//- Update model
+#updateurbanfarmer.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        h1#updateurbanfarmer.modal-title.fs-5 Update Urban Farmers
+        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        .container
+          .row
+            .col-lg-12
+              form.cont-form(action='/fo' method='post')
+                .row.form-row
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='text' placeholder='F/O Number' name='uf_id' required)
+                    label#float-lables Unique Id
                   .form-floating.col-lg-6
                     input#floatingInput.form-control(type='date' placeholder='Registation Date'  name='reg_date' required)
                     label#float-lables Registration Date
@@ -109,15 +167,15 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
                       option(value='Hoima') Hoima  
                   .modal-footer
                     button.btn.btn-success(type='submit' ) Submit
-                    button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
+                    button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close                   
 // table
-.container.info-table
+.container-fluid.info-table
   .row
     .table-responsive
       table.table.table-bordered.border-dark.table-hover
         thead(style='background-color: #3D8361; color: white;')
           tr
-            th Urban Farmer ID
+            th Urban Farmer Unique Id
             th Date of Registration
             th Names  
             th DOB
@@ -142,8 +200,11 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
               td
                 a.text-success(href='#')
                  i.fas.fa-edit.fa-lg.mx-1
+                 button(type="submit" data-bs-toggle='modal' value=`` data-bs-target='#updateurbanfarmer') open modal 
                 a.text-danger(href='#')
                  i.fas.fa-trash.fa-lg.mx-1
+
+
 
 // JavaScript Bundle with Popper
 script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js' integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==' crossorigin='anonymous' referrerpolicy='no-referrer')

@@ -1,0 +1,82 @@
+doctype html
+head
+  title
+  // CSS only
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  link(rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css')
+  link(rel='stylesheet' href='/css/style.css')
+// main
+.main
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    a.navbar-brand(href='#') Main Nav
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link(href='/ao') AO 
+        li.nav-item
+          a.nav-link(href='/fo') FO 
+        li.nav-item
+          a.nav-link(href='/gp') GP 
+        li.nav-item
+          a.nav-link(href='/add_prod') UF 
+        li.nav-item 
+          a.nav-link(href='/auth') Login    
+
+form(action=`/fo_approve/id${prod_display._id}` method='post')
+  .container-fluid.info-table
+    .row
+      .table-responsive
+        table.table.table-bordered.border-dark.table-hover
+          thead(style='background-color: #3D8361; color: white;')
+            tr
+              th(scope='col') Date
+              th(scope='col') Produce Name
+              th(scope='col') Ward Name
+              th(scope='col') Unit Price (UGX)
+              th(scope='col') Quantity
+              th(scope='col') Directions
+              th(scope='col') Produce Type
+              th(scope='col') Mode of Payment
+              th(scope='col') Mode of Delivery
+              th(scope='col') Product Img
+              th Status
+              th Category
+              th Approve/Reject Product
+                tbody
+                    each prod_dis in prod_display
+                        tr
+                        td #{prod_dis.date}
+                        td #{prod_dis.prod_name}
+                        td #{prod_dis.ward_name}
+                        td #{prod_dis.unit_price}
+                        td #{prod_dis.qty}
+                        td #{prod_dis.directions}
+                        td #{prod_dis.produce_type}
+                        td #{prod_dis.mode_payment}
+                        td #{prod_dis.mode_of_delivery}
+                        td         
+                         img(src="/"+prod_dis.prod_image, width="90" class="img-thumbnail")  
+                        td #{prod_dis.prod_status}    
+                        td #{prod_dis.category}                            
+                        td 
+                          a.text-success(href=`/prod_approve/app/${prod_dis._id}`)
+                           i.fas.fa-edit.fa-lg.mx-1
+                              
+                
+
+
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js' integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==' crossorigin='anonymous' referrerpolicy='no-referrer')
+script(type='text/javascript' src='https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3' crossorigin='anonymous')
+script.
+  $(document).ready(function(){
+  $("table").DataTable({
+  order:[0, 'desc']
+  });
+  });
+
+
+//- script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js' integrity='sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8' crossorigin='anonymous')

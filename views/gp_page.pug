@@ -127,102 +127,48 @@ section.prod-carousel
     #pills-home.tab-pane.show.active(role='tabpanel' aria-labelledby='pills-home-tab')
       .container
         .row
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/carrot.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Carrots
-                p 6,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/potato.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Potatoes
-                p 3,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/tomato.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Tomatos
-                p 5,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/brocolli.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Brocolli
-                p 10,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
+          if prod_displays.length 
+            each prod_display in prod_displays 
+              if prod_display.prod_status === 'Approved' && prod_display.category === 'Vegetables'    
+                    .col-lg-3
+                      .card.prod-card-tab(style='width: 17rem;')
+                        img.card-img-cat(src=`${prod_display.prod_image}` alt='Card image cap')
+                        .card-body.card-body-prod
+                          h5.card-text #{prod_display.prod_name}
+                          p #{prod_display.unit_price} (UGX)
+                          a.btn.btn-primary(href='#') Add to Cart
         .button.d-flex.justify-content-center.mt-5
           button.view-btn View more
     // fruits content
     #pills-profile.tab-pane.fade(role='tabpanel' aria-labelledby='pills-profile-tab')
       .container
         .row
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/carrot.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Carrot
-                p 6,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/potato.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Potato
-                p 3,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/tomato.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Tomato
-                p 5,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/brocolli.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Brocolli
-                p 10,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
+           if prod_displays.length 
+            each prod_display in prod_displays 
+              if prod_display.prod_status === 'Approved' && prod_display.category === 'Fruits'
+                    .col-lg-3
+                      .card.prod-card-tab(style='width: 17rem;')
+                        img.card-img-cat(src=`${prod_display.prod_image}` alt='Card image cap')
+                        .card-body.card-body-prod
+                          h5.card-text #{prod_display.prod_name}
+                          p  #{prod_display.unit_price} (UGX)
+                          a.btn.btn-primary(href='#') Add to Cart
         .button.d-flex.justify-content-center.mt-5
           button.view-btn View more
     // dairy content
     #pills-contact.tab-pane.fade(role='tabpanel' aria-labelledby='pills-contact-tab')
       .container
         .row
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/carrot.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Carrot
-                p 6,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/potato.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Potato
-                p 3,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/tomato.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Tomato
-                p 5,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
-          .col-lg-3
-            .card.prod-card-tab(style='width: 17rem;')
-              img.card-img-cat(src='/img/brocolli.png' alt='Card image cap')
-              .card-body.card-body-prod
-                h5.card-text Brocolli
-                p 10,000UGX/kg
-                a.btn.btn-primary(href='#') Add to Cart
+          if prod_displays.length 
+            each prod_display in prod_displays 
+              if prod_display.prod_status === 'Approved' && prod_display.category === 'Dairy'
+                  .col-lg-3
+                    .card.prod-card-tab(style='width: 17rem;')
+                      img.card-img-cat(src=`${prod_display.prod_image}` alt='Card image cap')
+                      .card-body.card-body-prod
+                        h5.card-text #{prod_display.prod_name}
+                        p #{prod_display.unit_price} (UGX) 
+                        a.btn.btn-primary(href='#') Add to Cart
         .button.d-flex.justify-content-center.mt-5
           button.view-btn View more
   .space

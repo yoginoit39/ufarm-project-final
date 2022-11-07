@@ -106,3 +106,17 @@ head
 
  nav.navbar.navbar-expand-lg(style='background-color: #3D8361;')
     a#btn-signout(href='') Sign Out
+
+
+    if prod_displays.length 
+            each prod_display in prod_displays 
+              if prod_display.prod_status === 'Approved'
+                each prod_display in prod_displays 
+                  if prod_display.category === 'Dairy'
+
+
+                            if prod_displays.length 
+            each prod_display in prod_displays 
+              if prod_display.prod_status === 'Approved'
+                each prod_display in prod_displays 
+                  if prod_display.category === 'Fruits'

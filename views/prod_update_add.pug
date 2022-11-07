@@ -133,8 +133,32 @@ head
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer')
   link(rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css')
   link(rel='stylesheet' href='/css/style.css')
+  link(rel='stylesheet' href='/css/update.css')
   title Update Product 
-.container
+style.
+  .prod_update_cont{
+    border: 1px solid white;
+    margin-top: 45px;
+  }
+  .btn-sub{
+    margin-left:600px;
+    background:green;
+    color:white;
+    border:none;
+    height:40px;
+  }
+  .header{
+    text-align:center;
+    padding-top:55px;
+    color:white;
+  }
+  .form-row{
+    padding-right:20px;
+  }
+ 
+
+h1.header Update Product 
+.container.prod_update_cont
   .row
     form#add-form.cont-form(action=`/add_prod/update/${user_produce._id}` method='post' enctype="multipart/form-data")
           .row.form-row
@@ -178,7 +202,7 @@ head
             .col-lg-6
               div
                 input#formFile.form-control.upload-image(type='file' name='prod_image' disabled)
-          button(type='submit' name='submit' class='submit-btn') Update Item
+          button.btn-sub(type='submit' name='submit' class='submit-btn') Update Item
 
 
 script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js' integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==' crossorigin='anonymous' referrerpolicy='no-referrer')

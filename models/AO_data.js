@@ -4,6 +4,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    password:{
+        type: String
+    },
     reg_date:{
         type: Date,
         required: true
@@ -33,7 +36,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     phn_nmbr:{
-        type: Number,
+        type: String,
         required: true
     },
     home_directions:{

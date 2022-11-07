@@ -9,6 +9,7 @@ const gpRoute = require('./routes/gp_route');
 const aoRoute = require('./routes/ao_route');
 const foRoute = require('./routes/fo_route');
 const authRoute = require('./routes/authRoute');
+// const app_table = require('./routes/approve_status');
 
 
 
@@ -49,6 +50,7 @@ app.use("/", foRoute);
 app.use("/", gpRoute);
 app.use("/", ufRoute);
 app.use("/", authRoute);
+// app.use("/", app_table);
 
 
 
@@ -60,7 +62,7 @@ app.use("/", authRoute);
 // });
 
 
-app.listen(4000,console.log(`running on port`));
+app.listen(5000,console.log(`running on port 4000`));
 
 
 

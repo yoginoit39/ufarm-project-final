@@ -48,6 +48,7 @@ head
       // Button trigger modal
       button.btn.btn-success#reg_button(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal')
         | Register Farmer One +
+
 // Modal
 #exampleModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
   .modal-dialog.modal-lg
@@ -64,6 +65,9 @@ head
                   .form-floating.col-lg-6
                     input#floatingInput.form-control(type='text' placeholder='F/O Number' name='fo_id' required)
                     label#float-lables F/O Number
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='text' placeholder='F/O password' name='password' required)
+                    label#float-lables Password
                   .form-floating.col-lg-6
                     input#floatingInput.form-control(type='date' placeholder='Registation Date'  name='reg_date' required)
                     label#float-lables Registration Date
@@ -108,17 +112,86 @@ head
                     input#floatingInput.form-control(type='number' placeholder='period of stay' name='period_of_stay' required)
                     label#float-lables Period of Stay
                   .modal-footer
-                    button.btn.btn-success(type='submit' onclick="checkInputs()" ) Submit
+                    button.btn.btn-success(type='submit' ) Submit
                     button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
+
+//- update modal
+#updatefarmerone.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        h1#exampleModalLabel.modal-title.fs-5 Update Farmer One
+        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        .container
+          .row
+            .col-lg-12
+              form.cont-form#ao-form(action=`/ao/update/${ao_users._id}` method='post')
+                .row.form-row
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='text' placeholder='F/O Number' name='fo_id' required)
+                    label#float-lables F/O Number
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='text' placeholder='Password' name='fo_id' value=`${ao_users.password}` disabled )
+                    label#float-lables Password  
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='date' placeholder='Registation Date'  name='reg_date' required)
+                    label#float-lables Registration Date
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='text' placeholder='Full Name' value=`${ao_users.full_name}`  name='full_name' required)
+                    label#float-lables Full Name
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='date' placeholder='Date of Birth' name='dob' required)
+                    label#float-lables Date of Birth
+                  .form-floating.col-lg-6.form-sel-act
+                    select.form-select(aria-label='Gender' name='Gender')
+                      option() Gender
+                      option(value='Male') Male
+                      option(value='Female') Female
+                  .form-floating.col-lg-6.form-sel-act
+                    select.form-select(aria-label='Ward Represented' name='Ward_Represented' required)
+                      option() Ward Represented
+                      option(value='Kampala') Kampala
+                      option(value='Masaka') Masaka
+                      option(value='Jinja') Jinja
+                      option(value='Hoima') Hoima    
+                  .form-floating.col-lg-6.form-sel-act(style='margin-top:20px')
+                    select.form-select(aria-label='Activities Involved' name='Acty_involved' required)
+                      option() Activities involved
+                      option(value='Mobilization') Mobilization
+                      option(value='Supervision') Supervision
+                      option(value='Regulation') Regulation
+                      option(value='Support') Support              
+                  .form-floating.col-lg-6(style='margin-top:20px')
+                    input#floatingInput.form-control(type='text' placeholder='Nin Number' name='nin_number' required)
+                    label#float-lables Nin Number
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='tel' placeholder='Phone Number' name='phn_nmbr' required)
+                    label#float-lables Phone Number
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='text' placeholder='Home Directions' name='home_directions' required)
+                    label#float-lables Home Directions
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='text' placeholder='Residence Type' name='res_type' required)
+                    label#float-lables Residence Type
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='number' placeholder='period of stay' name='period_of_stay' required)
+                    label#float-lables Period of Stay
+                  .modal-footer
+                    button.btn.btn-success(type='submit' ) Update
+                    button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
+
+
                                
     // table
-.container.info-table
+.container-fluid.info-table
     .row
       .table-responsive
         table.table.table-bordered.border-dark.table-hover
           thead(style='background-color: #3D8361; color: white;')
             tr
               th f/0 Number
+              th Password
               th Date of Registration
               th Name
               th Date of Birth
@@ -134,6 +207,7 @@ head
             each ao in ao_users
               tr.align-middle
                 td #{ao.fo_id}
+                td #{ao.password}
                 td #{ao.reg_date}
                 td #{ao.full_name}
                 td #{ao.dob}
@@ -145,11 +219,13 @@ head
                 td #{ao.res_type}
                 td #{ao.period_of_stay}
                 td
-                  a.text-success(href=`/ao/update/${ao._id}`)
+                  a.text-success(href=`/ao/update/${ao._id}` data-bs-toggle='modal' data-bs-target='#updatefarmerone')
                    i.fas.fa-edit.fa-lg.mx-1
-                  a.text-danger(href='#')
-                   i.fas.fa-trash.fa-lg.mx-1
-                                      
+                   form(action=`/ao/delete` method="post")  
+                      input(type="hidden" value=`${ao._id}` name='delete')  
+                      button(type="submit") Delete
+                               
+                                   
 // JavaScript Bundle with Popper 
 script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js' integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==' crossorigin='anonymous' referrerpolicy='no-referrer')
 script(type='text/javascript' src='https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js')

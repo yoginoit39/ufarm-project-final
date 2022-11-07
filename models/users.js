@@ -2,45 +2,44 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     date:{       
         type: Date,
-        required: true,
-        default: Date.now,
-        required: true
+        default: Date.now
     },
     prod_name:{
-        type: String,
-        required: true
+        type: String
     },
     ward_name:{
-        type: String,
-        required: true
+        type: String
     },
     unit_price:{
-        type: Number,
-        required: true
+        type: Number
     },
     qty:{
-        type: String,
-        required: true
+        type: String
     },
     directions:{
-        type: String,
-        required: true,
+        type: String
     },
     produce_type:{
-        type: String,
-        required: true
+        type: String
     },
     mode_payment:{
-        type: String,
-        required: true
+        type: String
     },
     mode_of_delivery:{
-        type: String,
-        required: true,
+        type: String
     },
     prod_image:{
+        type: String
+    },
+    prod_available:{
+        type: String
+    },
+    prod_status:{
         type: String,
-        required: true
+        default: 'pending'
+    },
+    category:{
+        type: String
     },
    
 });

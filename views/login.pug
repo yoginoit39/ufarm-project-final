@@ -22,7 +22,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       li.nav-item
         a.nav-link(href='/add_prod') UF 
       li.nav-item 
-        a.nav-link(href='/auth') Login    
+        a.nav-link(href='/auth') Login  
+      li.nav-item 
+        a.nav-link(href='/fo_approve') prod approve      
 
 .login-page.bg-light
   .container.main-page
@@ -33,7 +35,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           .row
             .col-md-7.pe-0
               .form-left.h-100.py-5.px-5
-                form.row.g-4(action='/login' action='post')
+                form.row.g-4(action='/login')
                   .col-12
                     label
                       | Unique Id
