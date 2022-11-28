@@ -8,22 +8,36 @@ head
   link(rel='stylesheet' href='/css/style.css')
 // main
 .main
-  nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    a.navbar-brand(href='#') Main Nav
+  //- nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  //-   a.navbar-brand(href='#') Main Nav
+  //-   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+  //-     span.navbar-toggler-icon
+  //-   #navbarNav.collapse.navbar-collapse
+  //-     ul.navbar-nav
+  //-       li.nav-item
+  //-         a.nav-link(href='/ao') AO 
+  //-       li.nav-item
+  //-         a.nav-link(href='/fo') FO 
+  //-       li.nav-item
+  //-         a.nav-link(href='/gp') GP 
+  //-       li.nav-item
+  //-         a.nav-link(href='/add_prod') UF 
+  //-       li.nav-item 
+  //-         a.nav-link(href='/auth') Login  
+  //-       li.nav-item 
+  //-         form(action="/logout", method="post")
+  //-           button(type="submit") Logout  
+           
+.main
+  nav.navbar.navbar-expand-lg.navbar-light.bg-success
+    a.navbar-brand.clr-white(href='/ao' style='color:white') AO Dashboard
     button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarNav.collapse.navbar-collapse
       ul.navbar-nav
-        li.nav-item
-          a.nav-link(href='/ao') AO 
-        li.nav-item
-          a.nav-link(href='/fo') FO 
-        li.nav-item
-          a.nav-link(href='/gp') GP 
-        li.nav-item
-          a.nav-link(href='/add_prod') UF 
-        li.nav-item 
-          a.nav-link(href='/auth') Login    
+      li.nav-item 
+        form(action="/logout", method="post")
+          button(type="submit") Logout    
   // tile section
   .container.tile-container
       .row.gx-5
@@ -66,7 +80,7 @@ head
                     input#floatingInput.form-control(type='text' placeholder='F/O Number' name='fo_id' required)
                     label#float-lables F/O Number
                   .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='text' placeholder='F/O password' name='password' required)
+                    input#floatingInput.form-control(type='password' placeholder='F/O password' name='password' required)
                     label#float-lables Password
                   .form-floating.col-lg-6
                     input#floatingInput.form-control(type='date' placeholder='Registation Date'  name='reg_date' required)
@@ -85,11 +99,11 @@ head
                   .form-floating.col-lg-6.form-sel-act
                     select.form-select(aria-label='Ward Represented' name='Ward_Represented' required)
                       option() Ward Represented
-                      option(value='Kampala') Kampala
-                      option(value='Masaka') Masaka
-                      option(value='Jinja') Jinja
-                      option(value='Hoima') Hoima    
-                  .form-floating.col-lg-6.form-sel-act(style='margin-top:20px')
+                      option(value='Central') Central
+                      option(value='East') East
+                      option(value='West') West
+                      option(value='North') North    
+                  .form-floating.col-lg-6.form-sel-act
                     select.form-select(aria-label='Activities Involved' name='Acty_involved' required)
                       option() Activities involved
                       option(value='Mobilization') Mobilization
@@ -99,7 +113,7 @@ head
                   .form-floating.col-lg-6(style='margin-top:20px')
                     input#floatingInput.form-control(type='text' placeholder='Nin Number' name='nin_number' required)
                     label#float-lables Nin Number
-                  .form-floating.col-lg-6
+                  .form-floating.col-lg-6(style='margin-top:20px')
                     input#floatingInput.form-control(type='tel' placeholder='Phone Number' name='phn_nmbr' required)
                     label#float-lables Phone Number
                   .form-floating.col-lg-6
@@ -111,6 +125,8 @@ head
                   .form-floating.col-lg-6
                     input#floatingInput.form-control(type='number' placeholder='period of stay' name='period_of_stay' required)
                     label#float-lables Period of Stay
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='hidden' value='farmer One'  name='role' required)
                   .modal-footer
                     button.btn.btn-success(type='submit' ) Submit
                     button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
@@ -132,13 +148,13 @@ head
                     input#floatingInput.form-control(type='text' placeholder='F/O Number' name='fo_id' required)
                     label#float-lables F/O Number
                   .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='text' placeholder='Password' name='fo_id' value=`${ao_users.password}` disabled )
+                    input#floatingInput.form-control(type='text' placeholder='Password' name='password'  required )
                     label#float-lables Password  
                   .form-floating.col-lg-6
                     input#floatingInput.form-control(type='date' placeholder='Registation Date'  name='reg_date' required)
                     label#float-lables Registration Date
                   .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='text' placeholder='Full Name' value=`${ao_users.full_name}`  name='full_name' required)
+                    input#floatingInput.form-control(type='text' placeholder='Full Name' name='full_name' required)
                     label#float-lables Full Name
                   .form-floating.col-lg-6
                     input#floatingInput.form-control(type='date' placeholder='Date of Birth' name='dob' required)
@@ -155,14 +171,14 @@ head
                       option(value='Masaka') Masaka
                       option(value='Jinja') Jinja
                       option(value='Hoima') Hoima    
-                  .form-floating.col-lg-6.form-sel-act(style='margin-top:20px')
+                  .form-floating.col-lg-6.form-sel-act
                     select.form-select(aria-label='Activities Involved' name='Acty_involved' required)
                       option() Activities involved
                       option(value='Mobilization') Mobilization
                       option(value='Supervision') Supervision
                       option(value='Regulation') Regulation
                       option(value='Support') Support              
-                  .form-floating.col-lg-6(style='margin-top:20px')
+                  .form-floating.col-lg-6
                     input#floatingInput.form-control(type='text' placeholder='Nin Number' name='nin_number' required)
                     label#float-lables Nin Number
                   .form-floating.col-lg-6
@@ -180,14 +196,12 @@ head
                   .modal-footer
                     button.btn.btn-success(type='submit' ) Update
                     button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
-
-
-                               
-    // table
+                             
+// table
 .container-fluid.info-table
     .row
       .table-responsive
-        table.table.table-bordered.border-dark.table-hover
+        table.table.table-bordered.border-success.table-hover
           thead(style='background-color: #3D8361; color: white;')
             tr
               th f/0 Number
@@ -205,23 +219,24 @@ head
               th Alter Details
           tbody
             each ao in ao_users
-              tr.align-middle
-                td #{ao.fo_id}
-                td #{ao.password}
-                td #{ao.reg_date}
-                td #{ao.full_name}
-                td #{ao.dob}
-                td #{ao.Gender}
-                td #{ao.Acty_involved}
-                td #{ao.nin_number}
-                td #{ao.phn_nmbr}
-                td #{ao.home_directions}
-                td #{ao.res_type}
-                td #{ao.period_of_stay}
-                td
-                  a.text-success(href=`/ao/update/${ao._id}` data-bs-toggle='modal' data-bs-target='#updatefarmerone')
-                   i.fas.fa-edit.fa-lg.mx-1
-                   form(action=`/ao/delete` method="post")  
+              if ao.role === 'farmer One' 
+                tr.align-middle
+                  td #{ao.fo_id}
+                  td #{ao.password}
+                  td #{ao.reg_date}
+                  td #{ao.full_name}
+                  td #{ao.dob}
+                  td #{ao.Gender}
+                  td #{ao.Acty_involved}
+                  td #{ao.nin_number}
+                  td #{ao.phn_nmbr}
+                  td #{ao.home_directions}
+                  td #{ao.res_type}
+                  td #{ao.period_of_stay}
+                  td
+                    a.text-success(href=`/ao/update/${ao._id}`)
+                      i.fas.fa-edit.fa-lg.mx-1
+                    form(action=`/ao/delete` method="post")  
                       input(type="hidden" value=`${ao._id}` name='delete')  
                       button(type="submit") Delete
                                
@@ -236,3 +251,7 @@ script.
   order:[0, 'desc']
   });
   });
+
+
+//-  a.text-success(href=`/ao/update/${ao._id}`)
+//-                    i.fas.fa-edit.fa-lg.mx-1

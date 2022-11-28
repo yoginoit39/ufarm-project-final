@@ -6,17 +6,32 @@ a {
     height: 50vh;
     display: inline-block;
     display: flex;
+    background-image: url(../img/green-bg.jpg);
+
  
 }
 
 .main-page{
-    margin-top: 70px;   
+    margin-top: 70px; 
+   
 }
+
 
 .form-right i {
     font-size: 100px;
+ 
 }
 
-.body{
+.form-right:hover{
+    box-shadow: 10px 10px 30px 1px grey;
+    transition-duration: 0.3s;
+}
+
+.form-left:hover{
+    box-shadow: 10px 10px 30px 1px grey;
+    transition-duration: 0.3s;
+}
+
+body{
     background-image: url(../img/green-bg.jpg);
 }

@@ -7,6 +7,16 @@ const userSchema = new mongoose.Schema({
     prod_name:{
         type: String
     },
+    owner_id:{
+        type: mongoose.Types.ObjectId,
+        ref: 'ao_user'
+    },
+    owner_name:{
+        type: String
+    },
+    owner_contact:{
+        type: Number
+    },
     ward_name:{
         type: String
     },

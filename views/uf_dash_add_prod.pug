@@ -1,6 +1,6 @@
 doctype html
 head
-  title
+  title Add Produce
   // CSS only
   link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi' crossorigin='anonymous')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer')
@@ -15,21 +15,13 @@ style.
 // main
 .main
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    a.navbar-brand(href='#') Main Nav
     button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarNav.collapse.navbar-collapse
       ul.navbar-nav
-        li.nav-item
-          a.nav-link(href='/ao') AO 
-        li.nav-item
-          a.nav-link(href='/fo') FO 
-        li.nav-item
-          a.nav-link(href='/gp') GP 
-        li.nav-item
-          a.nav-link(href='/add_prod') UF 
         li.nav-item 
-          a.nav-link(href='/auth') Login    
+          form(action="/logout", method="post")
+            button(type="submit" style='margin-top:10px; margin-left:1190px; border:none; background-color:red; color:white;') Logout     
 
 h1.header1 Add Products
 .container.main-container-uf
@@ -44,9 +36,13 @@ h1.header1 Add Products
             input#floatingInput.form-control(type='text' placeholder='Produce Name' name='prod_name' required)
             label#float-lables Produce Name
         .row.form-row
-          .form-floating.col-lg-6
-            input#floatingInput.form-control(type='text' placeholder='Ward Name' name='ward_name' required)
-            label#float-lables Ward Name
+          .form-floating.col-lg-6.form-sel-act
+            select.form-select(aria-label='Default select example' name='ward_name' required)
+              option#selected(selected='') Ward Name
+              option(value='Central') Central 
+              option(value='East') East
+              option(value='West') West
+              option(value='North') North
           .form-floating.col-lg-6
             input#floatingInput.form-control(type='number' placeholder='Unit Price' name='unit_price' required)
             label#float-lables Unit Price UGX
@@ -66,8 +62,8 @@ h1.header1 Add Products
           .form-floating.col-lg-6.form-sel-act
             select.form-select(aria-label='Default select example' name='category' required)
               option#selected(selected='') Category
-              option(value='Vegetables') Vegetables 
-              option(value='Fruits') Fruits
+              option(value='Horticulture') Horticulture Produce 
+              option(value='Poultry') Poultry
               option(value='Dairy') Dairy
         .row.form-row
           .form-floating.col-lg-6.form-sel-act.mod-of-pay(style='margin-top:20px')
@@ -83,13 +79,10 @@ h1.header1 Add Products
           .col-lg-6(style='margin-top:20px')
             div
               input#formFile.form-control.upload-image(type='file' name='prod_image' required style='height:50px')
-        button(type='submit' name='submit' class='submit-btn' style='margin-left:600px; background-color:green; color:white; border:none; width:100px; height:50px;') Add item
+        button(type='submit' name='submit' class='submit-btn' style='margin-left:500px; background-color:green; color:white; border:none; width:100px; height:50px;') Add item
 
 
 //- update modal
-
-
-
 .container-fluid.info-table
   .row
       .table-responsive
@@ -97,41 +90,42 @@ h1.header1 Add Products
            thead(style='background-color: #3D8361; color: white;')
                 tr#align-middle                
                     th Date
-                    th(scope='col') Produce Name
-                    th(scope='col') Ward Name
-                    th(scope='col') Unit Price (UGX)
-                    th(scope='col') Quantity
-                    th(scope='col') Directions
-                    th(scope='col') Produce Type
-                    th(scope='col') Mode of Payment
-                    th(scope='col') Mode of Delivery 
+                    th Produce Name
+                    th Ward Name
+                    th Unit Price (UGX)
+                    th Quantity
+                    th Directions
+                    th Produce Type
+                    th Mode of Payment
+                    th Mode of Delivery 
                     th Status 
                     th Category   
-                    th(scope='col') Product Img
-                    th(scope='col') Action
+                    th Product Img
+                    th Action
                       tbody
-                          each user_prod in user_produce
+                        each user_prod in user_produce
+                          if user_prod.owner_name == urbanFarmer.full_name 
                             tr.align-middle                                                        
-                                  td #{user_prod.date}
-                                  td #{user_prod.prod_name}
-                                  td #{user_prod.ward_name}
-                                  td #{user_prod.unit_price}
-                                  td #{user_prod.qty}
-                                  td #{user_prod.directions}
-                                  td #{user_prod.produce_type}
-                                  td #{user_prod.mode_payment}
-                                  td #{user_prod.mode_of_delivery}
-                                  td #{user_prod.prod_status}
-                                  td #{user_prod.category}
-                                  td 
-                                    img(src="/"+user_prod.prod_image, width="90" class="img-thumbnail")                                  
-                                  .d-inline
-                                    td
-                                      a.text-success(href=`/add_prod/update/${user_prod._id}`)
-                                        i.fas.fa-edit.fa-lg.mx-1 
-                                      form(action=`/add_prod/delete` method="post")  
-                                        input(type="hidden" value=`${user_prod._id}` name='delete')  
-                                        button(type="submit") Delete
+                              td #{user_prod.date}
+                              td #{user_prod.prod_name}
+                              td #{user_prod.ward_name}
+                              td #{user_prod.unit_price}
+                              td #{user_prod.qty}
+                              td #{user_prod.directions}
+                              td #{user_prod.produce_type}
+                              td #{user_prod.mode_payment}
+                              td #{user_prod.mode_of_delivery}
+                              td #{user_prod.prod_status}
+                              td #{user_prod.category}
+                              td 
+                                img(src="/"+user_prod.prod_image, width="90" class="img-thumbnail")                                  
+                              .d-inline
+                                td
+                                  a.text-success(href=`/add_prod/update/${user_prod._id}`)
+                                    i.fas.fa-edit.fa-lg.mx-1 
+                                  form(action=`/add_prod/delete` method="post")  
+                                    input(type="hidden" value=`${user_prod._id}` name='delete')  
+                                    button(type="submit") Delete
                                         
 
 

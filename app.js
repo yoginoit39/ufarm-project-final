@@ -3,13 +3,18 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const passport = require('passport');
+
+
+const User = require('./models/AO_data');
+
 
 const ufRoute = require('./routes/uf_route');
 const gpRoute = require('./routes/gp_route');
 const aoRoute = require('./routes/ao_route');
 const foRoute = require('./routes/fo_route');
 const authRoute = require('./routes/authRoute');
-// const app_table = require('./routes/approve_status');
+// const cart = require('./routes/cart');
 
 
 
@@ -34,23 +39,33 @@ app.use( '/public/uploads', express.static(__dirname + '/public/uploads'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
+
 app.use(session({
     secret: 'my secret key',
     saveUninitialized: false,
     resave: false,
 }));
 
+// CHANGE: USE "createStrategy" INSTEAD OF "authenticate"
+app.use(passport.initialize());
+app.use(passport.session()); 
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-app.get('/', function(req,res){
-    res.render('login');
-});
+
+
+
+// app.get('/', (req,res) => {
+//     res.render('gp_page');
+// });
 
 app.use("/", aoRoute);
 app.use("/", foRoute);
 app.use("/", gpRoute);
 app.use("/", ufRoute);
 app.use("/", authRoute);
-// app.use("/", app_table);
+// app.use('/', cart);
 
 
 

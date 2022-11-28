@@ -108,15 +108,102 @@ head
     a#btn-signout(href='') Sign Out
 
 
-    if prod_displays.length 
-            each prod_display in prod_displays 
-              if prod_display.prod_status === 'Approved'
-                each prod_display in prod_displays 
-                  if prod_display.category === 'Dairy'
+  
 
 
-                            if prod_displays.length 
-            each prod_display in prod_displays 
-              if prod_display.prod_status === 'Approved'
-                each prod_display in prod_displays 
-                  if prod_display.category === 'Fruits'
+
+// info section
+.container.info-section
+  .row
+    .col-lg-3.col-sm-3.col-md-3.d-sm-inline-flex
+      img.img-fluid.img-icon(src='/img/8-trolley.svg' alt='')
+      p.info-text
+        strong.txt Free Shipping
+        br
+        |  On all orders over 30,000 UGX
+    .col-lg-3.col-sm-3.col-md-3.d-sm-inline-flex
+      img.img-fluid.img-icon(src='/img/9-money.svg' alt='')
+      p.info-text
+        strong.txt 24hrs Returns
+        br#mon-bck
+        |  Moneyback guarantee
+    .col-lg-3.col-sm-3.col-md-3.d-sm-inline-flex
+      img.img-fluid.img-icon(src='/img/10-credit-card.svg' alt='')
+      p.info-text
+        strong.txt Secure Payments
+        br
+        | Protected by Mobile Money
+    .col-lg-3.col-sm-3.col-md-3.d-sm-inline-flex
+      img.img-fluid.img-icon(src='/img/11-gift-card.svg' alt='')
+      p.info-text
+        strong.txt Offer &amp; gift here
+        br
+        | On all orders over
+// About Start
+.container-fluid.about-cont.py-5
+  .container.py-5
+    .row.gx-0.mb-3.mb-lg-0
+      .col-lg-6.my-lg-5.py-lg-5
+        .about-start.p-5
+          h1.display-5.mb-4 Welcome to Ufarm
+          p
+            | Tempor erat elitr at rebum at at clita. Diam dolor diam ipsum et, tempor sit sit diam amet et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor magna dolore erat amet
+          a.btn.btn-warning.rounded-pill.py-md-3.px-md-5.mt-4(href='') Contact Us
+      .col-lg-6(style='min-height: 400px;')
+        .position-relative.h-100
+          img.position-absolute.w-100.h-100(src='/img/veg1.webp' style='object-fit: cover;')
+    .row.gx-0
+      .col-lg-6(style='min-height: 400px;')
+        .position-relative.h-100
+          img.position-absolute.w-100.h-100(src='/img/img-2.jpg' style='object-fit: cover;')
+      .col-lg-6.my-lg-5.py-lg-5
+        .about-end.p-5
+          h1.display-5.mb-4 Why Choose Us?
+          p
+            | Tempor erat elitr at rebum at at clita. Diam dolor diam ipsum et, tempor sit sit diam amet et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor magna dolore erat amet
+          a.btn.btn-warning.rounded-pill.py-md-3.px-md-5.mt-4(href='') Get A Quote
+
+
+
+
+
+
+
+
+
+
+
+
+          .login-page.bg-light
+  .container.main-page
+    .row
+      .col-lg-10.offset-lg-1
+        h1.mb-3(style='text-align: center; color:white;') Login
+        .bg-white.shadow.rounded
+          .row
+            .col-md-7.pe-0
+              .form-left.h-100.py-5.px-5
+                form.row.g-4(action='/login' method='post')
+                  .col-12
+                    label
+                      | Unique Id
+                      span.text-danger *
+                    .input-group
+                      .input-group-text
+                        i.bi.bi-person-fill
+                      input.form-control(type='text' placeholder='Enter Unique Id' name='authDetails' required)
+                  .col-12
+                    label
+                      | Password
+                      span.text-danger *
+                    .input-group
+                      .input-group-text
+                        i.bi.bi-lock-fill
+                      input.form-control(type='password' placeholder='Enter Password' name='password' required)
+                  .col-12
+                    button.btn.btn-success.px-4.float-start.mt-4(type='submit') login
+            .col-md-5.ps-0.d-none.d-md-block
+              .form-right.h-100.bg-success.text-white.text-center.pt-5
+                i.bi.bi-bootstrap
+                h4.fs-1 Welcome To Ufarm!
+        p.text-end.text-secondary.mt-3 Ufarm/Yogesh Lakhani

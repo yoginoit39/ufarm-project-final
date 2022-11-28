@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const add_produce = require("../models/users");
+const add_produce = require("../models/add_prod");
 const multer = require("multer");
-const { deleteOne } = require("../models/users");
+const { deleteOne } = require("../models/add_prod");
+const registrationModel = require("../models/AO_data");
+const connectEnsureLogin = require('connect-ensure-login');
+
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -17,17 +20,23 @@ var upload = multer({ storage: storage });
 
 
 
+
 // add product
-router.get("/add_prod", async function (req, res) {
+router.get("/add_prod", connectEnsureLogin.ensureLoggedIn() , async function (req, res) {
+  const urbanFarmer = req.user
   const user_produce = await add_produce.find();
-  // console.log(user_produce);
-  res.render("uf_dash_add_prod", { user_produce });
+  // console.log(urbanFarmer);
+  res.render("uf_dash_add_prod", { user_produce, urbanFarmer });
 });
 
-router.post("/add_prod", upload.single("prod_image"), async function (req, res) {
+router.post("/add_prod",  upload.single("prod_image"), async function (req, res) {
   // console.log(req.body);
   const user_produce = new add_produce(req.body);
   user_produce.prod_image = req.file.path;
+  user_produce.owner_id = req.user._id;
+  const owner = await registrationModel.findById(user_produce.owner_id);
+  user_produce.owner_name = owner.full_name;
+  user_produce.owner_contact = owner.phn_nmbr;
   await user_produce.save();
 
   user_produce.save((err) =>{
@@ -38,6 +47,7 @@ router.post("/add_prod", upload.single("prod_image"), async function (req, res) 
     }
   })
 });
+
 
 // update
 router.get("/add_prod/update/:id", async function(req,res){

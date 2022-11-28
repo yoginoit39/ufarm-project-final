@@ -1,57 +1,67 @@
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 const userSchema = new mongoose.Schema({
     fo_id:{
         type: String,
-        required: true
+        unique: true,
+    },
+    role:{
+        type: String
     },
     password:{
         type: String
     },
     reg_date:{
         type: Date,
-        required: true
     },
     full_name:{
         type: String,
-        required: true
     },
     dob:{
         type: String,
-        required: true
     },
     Gender:{
         type: String,
-        required: true
     },
     Ward_Represented:{
         type: String,
-        required: true
     },
     Acty_involved:{
         type: String,
-        required: true
     },
     nin_number:{
         type: String,
-        required: true
     },
     phn_nmbr:{
         type: String,
-        required: true
     },
     home_directions:{
         type: String,
-        required: true
     },
     res_type:{
         type: String,
-        required: true
     },
     period_of_stay:{
         type: String,
-        required: true
     },
+    owner_id:{
+        type: mongoose.Types.ObjectId,
+        ref: 'ao_user'
+    },
+    owner_name:{
+        type: String
+    },
+    owner_contact:{
+        type: Number
+    },
+    gp_email:{
+        type: String
+    },
+    cust_phn_nmbr:{
+        type: String
+    }
 });
 
+userSchema.plugin(passportLocalMongoose, {usernameField:'fo_id'});
 
 module.exports = mongoose.model("ao_user", userSchema);

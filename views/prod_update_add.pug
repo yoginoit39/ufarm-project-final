@@ -141,7 +141,7 @@ style.
     margin-top: 45px;
   }
   .btn-sub{
-    margin-left:600px;
+    margin-left:510px;
     background:green;
     color:white;
     border:none;
@@ -163,45 +163,45 @@ h1.header Update Product
     form#add-form.cont-form(action=`/add_prod/update/${user_produce._id}` method='post' enctype="multipart/form-data")
           .row.form-row
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='date' placeholder='Date' name='date' disabled)
+              input#floatingInput.form-control(type='date' placeholder='Date' name='date' value=`${user_produce.date}` disabled)
               label#float-lables Date
             .form-floating.col-lg-6
               input#floatingInput.form-control(type='text' placeholder='Produce Name' name='prod_name' value=`${user_produce.prod_name}` disabled)
               label#float-lables Produce Name
           .row.form-row
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='text' placeholder='Ward Name' name='ward_name' disabled)
+              input#floatingInput.form-control(type='text' placeholder='Ward Name' name='ward_name' value=`${user_produce.ward_name}` disabled)
               label#float-lables Ward Name
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='number' placeholder='Unit Price' name='unit_price')
+              input#floatingInput.form-control(type='number' placeholder='Unit Price' name='unit_price' value=`${user_produce.unit_price}`)
               label#float-lables Unit Price UGX
           .row.form-row
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='text' placeholder='Quantity' name='qty')
+              input#floatingInput.form-control(type='text' placeholder='Quantity' name='qty' value=`${user_produce.qty}`)
               label#float-lables Quantity
             .form-floating.col-lg-6
-              input#floatingInput.form-control(type='text' placeholder='Directions' name='directions' disabled)
+              input#floatingInput.form-control(type='text' placeholder='Directions' name='directions' value=`${user_produce.directions}` disabled)
               label#float-lables Directions
           .row.form-row
             .form-floating.col-lg-6.form-sel-act
-              select.form-select(aria-label='Default select example' name='produce_type' disabled) 
+              select.form-select(aria-label='Default select example' name='produce_type' value=`${user_produce.produce_type}` disabled) 
                 option#selected(selected='') Produce Type
                 option(value='Organic') Organic
                 option(value='None Organic') None Organic
-            .form-floating.col-lg-6.form-sel-act.mod-of-pay
-              select.form-select(aria-label='Default select example' name='mode_payment' disabled)
+            .form-floating.col-lg-6.form-sel-act
+              select.form-select(aria-label='Default select example' name='mode_payment' value=`${user_produce.mode_payment}` disabled)
                 option#selected(selected='') Mode of payment
                 option(value='Cash') Cash
                 option(value='Mobile Money') Mobile Money
           .row.form-row(style='padding-top: 20px;')
             .form-floating.col-lg-6.form-sel-act
-              select.form-select(aria-label='Default select example' name='mode_of_delivery' disabled)
+              select.form-select(aria-label='Default select example' name='mode_of_delivery' value=`${user_produce.mode_of_delivery}` disabled)
                 option#selected(selected='') Mode of delivery
                 option(value='Pick Up') Pick Up
                 option(value='Home delivery') Home delivery
             .col-lg-6
               div
-                input#formFile.form-control.upload-image(type='file' name='prod_image' disabled)
+                input#formFile.form-control.upload-image(type='file' name='prod_image' value=`${user_produce.prod_image}` disabled)
           button.btn-sub(type='submit' name='submit' class='submit-btn') Update Item
 
 

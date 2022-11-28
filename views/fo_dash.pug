@@ -6,37 +6,37 @@ head
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer')
   link(rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css')
   link(rel='stylesheet' href='/css/style.css')
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  a.navbar-brand(href='#') Main Nav
-  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
-    span.navbar-toggler-icon
-  #navbarNav.collapse.navbar-collapse
-    ul.navbar-nav
-      li.nav-item
-        a.nav-link(href='/ao') AO 
-      li.nav-item
-        a.nav-link(href='/fo') FO 
-      li.nav-item
-        a.nav-link(href='/gp') GP 
-      li.nav-item
-        a.nav-link(href='/add_prod') UF 
-      li.nav-item 
-        a.nav-link(href='/auth') Login    
+.container-fluid
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarNavDropdown.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item.active
+          a.nav-link(href='/fo')
+            | Home 
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='/fo_approve') Approve Products
+        li.nav-item
+          a.nav-link(href='/view_order') See orders
+
+        li.nav-item 
+          form(action="/logout", method="post")
+            button(type="submit" style='margin-top:10px; margin-left:800px; border:none; background-color:red; color:white;') Logout 
+
+
 // tile section
-.container.tile-container
-  .row.gx-5
-    .col-lg-4
-      #tile-num.border.bg-success
-        p Total Urban Farmers
-        p 120
-    .col-lg-4
-      #tile-num.border.bg-primary
-        p Produce to Inspect
-        p 120
-    .col-lg-4
-      #tile-num.border.bg-warning
-        p Produce to Approve
-        p 630
+.container.tile-container.justify-content-center
+.row.gx-5
+  .col-lg-6
+    #tile-num.border.bg-success
+      p Total Urban Farmers
+      p 120
+  .col-lg-6
+    #tile-num.border.bg-warning
+      p Produce to Approve
+      p 630
 // end of tile
 // second tile section
 .container.tile-container.justify-content-center
@@ -71,8 +71,11 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
               form.cont-form(action='/fo' method='post')
                 .row.form-row
                   .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='text' placeholder='F/O Number' name='uf_id' required)
+                    input#floatingInput.form-control(type='text' placeholder='u/f Number' name='fo_id' required)
                     label#float-lables Unique Id
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='password' placeholder='u/f password' name='password' required)
+                    label#float-lables Password
                   .form-floating.col-lg-6
                     input#floatingInput.form-control(type='date' placeholder='Registation Date'  name='reg_date' required)
                     label#float-lables Registration Date
@@ -83,96 +86,42 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
                     input#floatingInput.form-control(type='date' placeholder='Date of Birth' name='dob' required)
                     label#float-lables Date of Birth
                   .form-floating.col-lg-6.form-sel-act
-                    select.form-select(aria-label='Gender' name='gender')
+                    select.form-select(aria-label='Gender' name='Gender')
                       option() Gender
                       option(value='Male') Male
                       option(value='Female') Female  
                   .form-floating.col-lg-6.form-sel-act(style='margin-top:0px')
-                    select.form-select(aria-label='Activities Undertaken' name='activity' required)
+                    select.form-select(aria-label='Activities Undertaken' name='Acty_involved' required)
                       option() Activities Undertaken
                       option(value='Mobilization') Mobilization
                       option(value='Supervision') Supervision
                       option(value='Regulation') Regulation
                       option(value='Support') Support              
                   .form-floating.col-lg-6(style='margin-top:20px')
-                    input#floatingInput.form-control(type='text' placeholder='Nin Number' name='ninNumber' required)
+                    input#floatingInput.form-control(type='text' placeholder='Nin Number' name='nin_number' required)
                     label#float-lables Nin Numberadd_prod
                   .form-floating.col-lg-6
-                    input#floatingInput.form-control.fo_phn_field(type='tel' placeholder='Phone Number' name='contact' style='margin-top:20px' required)
+                    input#floatingInput.form-control.fo_phn_field(type='tel' placeholder='Phone Number' name='phn_nmbr' style='margin-top:20px' required)
                     label#float-lables(style='margin-top:20px') Phone Number
                   .form-floating.col-lg-6.form-sel-act
-                    select.form-select(aria-label='Ward Name' name='ward_name' required)
+                    select.form-select(aria-label='Ward Name' name='Ward_Represented' required)
                       option() Ward Name
-                      option(value='Kampala') Kampala
-                      option(value='Masaka') Masaka 
-                      option(value='Jinja') Jinja
-                      option(value='Hoima') Hoima  
+                      option(value='Central') Central
+                      option(value='East') East 
+                      option(value='West') West
+                      option(value='North') North
+                  .form-floating.col-lg-6
+                    input#floatingInput.form-control(type='hidden' value='urbanFarmer'  name='role' required)  
                   .modal-footer
                     button.btn.btn-success(type='submit' ) Submit
                     button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
 
-
-
-
-
-//- Update model
-#updateurbanfarmer.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
-  .modal-dialog.modal-lg
-    .modal-content
-      .modal-header
-        h1#updateurbanfarmer.modal-title.fs-5 Update Urban Farmers
-        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-      .modal-body
-        .container
-          .row
-            .col-lg-12
-              form.cont-form(action='/fo' method='post')
-                .row.form-row
-                  .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='text' placeholder='F/O Number' name='uf_id' required)
-                    label#float-lables Unique Id
-                  .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='date' placeholder='Registation Date'  name='reg_date' required)
-                    label#float-lables Registration Date
-                  .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='text' placeholder='Full Name'  name='full_name' required)
-                    label#float-lables Full Name
-                  .form-floating.col-lg-6
-                    input#floatingInput.form-control(type='date' placeholder='Date of Birth' name='dob' required)
-                    label#float-lables Date of Birth
-                  .form-floating.col-lg-6.form-sel-act
-                    select.form-select(aria-label='Gender' name='gender')
-                      option() Gender
-                      option(value='Male') Male
-                      option(value='Female') Female  
-                  .form-floating.col-lg-6.form-sel-act(style='margin-top:0px')
-                    select.form-select(aria-label='Activities Undertaken' name='activity' required)
-                      option() Activities Undertaken
-                      option(value='Mobilization') Mobilization
-                      option(value='Supervision') Supervision
-                      option(value='Regulation') Regulation
-                      option(value='Support') Support              
-                  .form-floating.col-lg-6(style='margin-top:20px')
-                    input#floatingInput.form-control(type='text' placeholder='Nin Number' name='ninNumber' required)
-                    label#float-lables Nin Number
-                  .form-floating.col-lg-6
-                    input#floatingInput.form-control.fo_phn_field(type='tel' placeholder='Phone Number' name='contact' style='margin-top:20px' required)
-                    label#float-lables(style='margin-top:20px') Phone Number
-                  .form-floating.col-lg-6.form-sel-act
-                    select.form-select(aria-label='Ward Name' name='ward_name' required)
-                      option() Ward Name
-                      option(value='Kampala') Kampala
-                      option(value='Masaka') Masaka 
-                      option(value='Jinja') Jinja
-                      option(value='Hoima') Hoima  
-                  .modal-footer
-                    button.btn.btn-success(type='submit' ) Submit
-                    button.btn.btn-danger(type='button' data-bs-dismiss='modal') Close                   
+                   
 // table
 .container-fluid.info-table
   .row
     .table-responsive
-      table.table.table-bordered.border-dark.table-hover
+      table.table.table-bordered.border-success.table-hover
         thead(style='background-color: #3D8361; color: white;')
           tr
             th Urban Farmer Unique Id
@@ -184,25 +133,28 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             th NIN Number
             th Contact
             th Ward Name
+            th Role
             th Alter
         tbody
           each fo in fo_data 
-            tr.align-middle
-              td #{fo.uf_id}
-              td #{fo.reg_date}
-              td #{fo.full_name}
-              td #{fo.dob}
-              td #{fo.gender}
-              td #{fo.activity}
-              td #{fo.ninNumber}
-              td #{fo.contact}
-              td #{fo.ward_name}
-              td
-                a.text-success(href='#')
-                 i.fas.fa-edit.fa-lg.mx-1
-                 button(type="submit" data-bs-toggle='modal' value=`` data-bs-target='#updateurbanfarmer') open modal 
-                a.text-danger(href='#')
-                 i.fas.fa-trash.fa-lg.mx-1
+            if fo.owner_name == farmerOne.full_name 
+              tr.align-middle
+                td #{fo.fo_id}
+                td #{fo.reg_date}
+                td #{fo.full_name}
+                td #{fo.dob}
+                td #{fo.Gender}
+                td #{fo.Acty_involved}
+                td #{fo.nin_number}
+                td #{fo.phn_nmbr}
+                td #{fo.Ward_Represented}
+                td #{fo.role}
+                td
+                  a.text-success(href='#')
+                  i.fas.fa-edit.fa-lg.mx-1
+                  //- button(type="submit" data-bs-toggle='modal' value=`` data-bs-target='#updateurbanfarmer') open modal 
+                  a.text-danger(href='#')
+                  i.fas.fa-trash.fa-lg.mx-1
 
 
 

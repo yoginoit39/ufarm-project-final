@@ -1,3 +1,7 @@
 body{
     background-image: url(../img/green-bg.jpg);
 }
+
+.table td {
+    text-align: center;
+} 
